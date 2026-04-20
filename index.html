@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Towards High Fidelity Face Swapping: Project Page</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --maxw: 1120px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container {
+      width: min(var(--maxw), calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 48px 0 28px;
+      background: linear-gradient(180deg, #eef4ff 0%, #f7f8fb 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.15;
+      text-align: center;
+    }
+    .authors, .affils, .links, .note {
+      text-align: center;
+      margin: 10px auto;
+      max-width: 940px;
+    }
+    .authors { font-size: 18px; }
+    .affils, .note { color: var(--muted); }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      font-weight: 600;
+    }
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    section {
+      padding: 28px 0;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 6px 22px rgba(15, 23, 42, 0.04);
+    }
+    h2 {
+      margin: 0 0 16px;
+      font-size: 26px;
+    }
+    h3 {
+      margin: 20px 0 10px;
+      font-size: 20px;
+    }
+    p { margin: 10px 0; }
+    .teaser {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      display: block;
+    }
+    .muted { color: var(--muted); }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .result-block {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: #fcfcfd;
+    }
+    .result-block img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+    .caption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 12px;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 12px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f3f4f6; }
+    pre {
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 16px;
+      border-radius: 14px;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+    footer {
+      padding: 24px 0 50px;
+      color: var(--muted);
+      text-align: center;
+    }
+    @media (max-width: 800px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .authors { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Towards High Fidelity Face Swapping:<br/>A Comprehensive Survey and New Benchmark</h1>
+      <div class="authors">
+        Qi Li, Weining Wang, Shuangjun Du, Bo Peng, Jing Dong, Kun Wang, Zhenan Sun, and Ming-Hsuan Yang
+      </div>
+      <div class="affils">
+        Institute of Automation, Chinese Academy of Sciences &nbsp;|&nbsp; Nanyang Technological University &nbsp;|&nbsp; University of California, Merced
+      </div>
+      <div class="links">
+        <a class="btn primary" href="#" target="_blank" rel="noopener">Paper</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">arXiv</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">Code</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">Dataset</a>
+        <a class="btn" href="#citation">BibTeX</a>
+      </div>
+      <p class="note">This project page provides additional qualitative results, benchmark details, and resources for our face swapping survey and CASIA FaceSwapping benchmark.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <div class="card">
+        <h2>Overview</h2>
+        <p>
+          Face swapping aims to transfer the identity of a source face onto a target while preserving target-specific attributes such as pose, expression, illumination, and background. This project accompanies our survey and benchmark paper, which provides a unified taxonomy of existing methods and introduces <strong>CASIA FaceSwapping</strong>, a high-quality benchmark designed for fair and fine-grained evaluation.
+        </p>
+        <p>
+          Our benchmark emphasizes three practically important aspects: <strong>baseline performance under normal conditions</strong>, <strong>cross-ethnicity generalization</strong>, and <strong>robustness to attribute variations</strong>. We also provide additional visual comparisons to complement the quantitative analysis in the paper.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Teaser</h2>
+        <img class="teaser" src="assets/teaser.jpg" alt="Teaser figure" />
+        <p class="caption">
+          Replace this image with a teaser figure, benchmark overview, taxonomy figure, or a representative qualitative comparison from the paper.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Abstract</h2>
+        <p>
+          Face swapping has witnessed significant progress in recent years, largely driven by advances in deep generative models such as GANs and diffusion models. Despite these advances, existing methods remain fragmented across different paradigms, and their evaluation is highly inconsistent due to the lack of standardized datasets and protocols. Moreover, prior surveys primarily focus on broader deepfake generation or detection, leaving face swapping insufficiently studied as a standalone problem. In this paper, we present a comprehensive survey and benchmark for face swapping. We provide a structured review of existing methods, organizing them into five major paradigms and systematically analyzing their design principles, strengths, and limitations. To enable fair and controlled evaluation, we introduce CASIA FaceSwapping, a high-quality benchmark with balanced demographic distributions and explicit attribute variations, and establish standardized protocols to assess the robustness of different face swapping methods. Extensive experiments on representative approaches yield new insights into the performance characteristics and limitations of current techniques. Overall, our work provides a unified perspective and a principled evaluation framework to facilitate the development of more robust and controllable face swapping methods.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>More Qualitative Results</h2>
+        <p class="muted">At least one more comparison figure should be shown here, as suggested in the paper review. You can organize the results by protocol.</p>
+        <div class="grid-3">
+          <div class="result-block">
+            <h3>Normal Protocol</h3>
+            <img src="assets/normal_results.jpg" alt="Normal protocol qualitative results" />
+            <p class="caption">Examples under relatively benign conditions. Most methods produce plausible results, but differences remain in identity fidelity and local artifacts.</p>
+          </div>
+          <div class="result-block">
+            <h3>Cross-ethnicity Protocol</h3>
+            <img src="assets/cross_ethnicity_results.jpg" alt="Cross-ethnicity protocol qualitative results" />
+            <p class="caption">Examples highlighting demographic generalization. Identity leakage, skin-tone inconsistency, and shading discontinuities become more evident.</p>
+          </div>
+          <div class="result-block">
+            <h3>Cross-attribute Protocol</h3>
+            <img src="assets/cross_attribute_results.jpg" alt="Cross-attribute protocol qualitative results" />
+            <p class="caption">Examples under challenging pose, expression, or illumination shifts, where local warping and boundary artifacts are more likely to appear.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Benchmark Overview</h2>
+        <div class="grid-2">
+          <div>
+            <h3>CASIA FaceSwapping</h3>
+            <ul>
+              <li>1,291 subjects and 2,582 videos</li>
+              <li>4K resolution (2160 × 3840)</li>
+              <li>Balanced demographic composition</li>
+              <li>Controlled pose, expression, and illumination variations</li>
+              <li>Designed specifically for face swapping evaluation</li>
+            </ul>
+          </div>
+          <div>
+            <img class="teaser" src="assets/dataset_samples.jpg" alt="Dataset samples" />
+            <p class="caption">Suggested figure: aligned face samples illustrating ethnicity, pose, illumination, and expression variations.</p>
+          </div>
+        </div>
+
+        <h3>Evaluation Protocols</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Protocol</th>
+              <th>Goal</th>
+              <th>Setting</th>
+              <th>Pairs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Normal</td>
+              <td>Baseline performance</td>
+              <td>Same ethnicity, normal conditions</td>
+              <td>4,500</td>
+            </tr>
+            <tr>
+              <td>Cross-ethnicity</td>
+              <td>Demographic generalization</td>
+              <td>Different ethnicities, normal conditions</td>
+              <td>1,200</td>
+            </tr>
+            <tr>
+              <td>Cross-attribute</td>
+              <td>Robustness to attribute shifts</td>
+              <td>Same ethnicity, varying pose / expression / illumination</td>
+              <td>4,300</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Representative Results</h2>
+        <p>
+          Quantitative evaluation shows that different methods exhibit distinct trade-offs between identity fidelity, attribute consistency, and visual realism. Our benchmark highlights that performance under standard settings does not necessarily translate to stronger robustness under cross-ethnicity or cross-attribute scenarios.
+        </p>
+        <div class="grid-2">
+          <div class="result-block">
+            <img src="assets/radar_chart.jpg" alt="Radar chart" />
+            <p class="caption">Suggested figure: normalized radar chart summarizing identity preservation, pose/expression consistency, and FID under the three protocols.</p>
+          </div>
+          <div class="result-block">
+            <img src="assets/line_chart.jpg" alt="Line chart" />
+            <p class="caption">Suggested figure: protocol-level performance trends showing how methods degrade under harder evaluation settings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Resources</h2>
+        <div class="grid-3">
+          <div class="result-block">
+            <h3>Paper</h3>
+            <p>PDF, supplementary material, and citation information.</p>
+            <p><a href="#" target="_blank" rel="noopener">Download PDF</a></p>
+          </div>
+          <div class="result-block">
+            <h3>Code</h3>
+            <p>Training, evaluation, and benchmark scripts.</p>
+            <p><a href="#" target="_blank" rel="noopener">Coming Soon</a></p>
+          </div>
+          <div class="result-block">
+            <h3>Dataset</h3>
+            <p>Dataset description, protocol files, and access instructions.</p>
+            <p><a href="#" target="_blank" rel="noopener">Coming Soon</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation">
+      <div class="card">
+        <h2>Citation</h2>
+        <pre>@article{li2026faceswappingsurvey,
+  title   = {Towards High Fidelity Face Swapping: A Comprehensive Survey and New Benchmark},
+  author  = {Qi Li and Weining Wang and Shuangjun Du and Bo Peng and Jing Dong and Kun Wang and Zhenan Sun and Ming-Hsuan Yang},
+  journal = {TBD},
+  year    = {2026}
+}</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Project page for the face swapping survey and benchmark. Please replace placeholder links and images before publishing.
+    </div>
+  </footer>
+</body>
+</html>
