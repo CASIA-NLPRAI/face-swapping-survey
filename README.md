@@ -23,7 +23,7 @@ Face swapping aims to transfer the identity of a source face onto a target while
 
 The project page is built with GitHub Pages and can be accessed at:
 
-`https://your-github-username.github.io/face-swapping-survey/`
+`https://casia-nlprai.github.io/face-swapping-survey/`
 
 ## Repository Structure
 
