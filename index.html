@@ -3,323 +3,769 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Towards High Fidelity Face Swapping: Project Page</title>
+  <meta name="description" content="Project page for Towards High-Fidelity Face Swapping: A Comprehensive Survey and New Benchmark." />
+  <title>Towards High-Fidelity Face Swapping</title>
   <style>
     :root {
-      --bg: #f7f8fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --line: #e5e7eb;
-      --accent: #2563eb;
-      --accent-soft: #dbeafe;
-      --maxw: 1120px;
+      --bg: #f6f7fb;
+      --bg2: #eef3ff;
+      --card: rgba(255, 255, 255, 0.92);
+      --text: #172033;
+      --muted: #677084;
+      --line: #e4e8f1;
+      --primary: #3157d5;
+      --primary2: #7c3aed;
+      --soft: #edf2ff;
+      --shadow: 0 18px 45px rgba(28, 38, 72, 0.10);
+      --radius: 22px;
+      --maxw: 1180px;
     }
+
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
+      background:
+        radial-gradient(circle at top left, rgba(49,87,213,0.16), transparent 34rem),
+        radial-gradient(circle at top right, rgba(124,58,237,0.13), transparent 34rem),
+        linear-gradient(180deg, #fbfcff 0%, var(--bg) 40%, #fff 100%);
+      line-height: 1.68;
     }
-    a { color: var(--accent); text-decoration: none; }
+
+    a { color: var(--primary); text-decoration: none; }
     a:hover { text-decoration: underline; }
+
     .container {
-      width: min(var(--maxw), calc(100% - 32px));
+      width: min(var(--maxw), calc(100% - 34px));
       margin: 0 auto;
     }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(255,255,255,0.78);
+      border-bottom: 1px solid rgba(228,232,241,0.85);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 64px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+      box-shadow: 0 10px 20px rgba(49,87,213,0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a { color: var(--muted); font-weight: 600; }
+    .nav-links a:hover { color: var(--primary); text-decoration: none; }
+
     .hero {
-      padding: 48px 0 28px;
-      background: linear-gradient(180deg, #eef4ff 0%, #f7f8fb 100%);
-      border-bottom: 1px solid var(--line);
+      padding: 74px 0 34px;
+      text-align: center;
     }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border: 1px solid rgba(49,87,213,0.22);
+      border-radius: 999px;
+      background: rgba(237,242,255,0.78);
+      color: #2d48a4;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
     h1 {
-      margin: 0 0 16px;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.15;
-      text-align: center;
+      max-width: 1040px;
+      margin: 0 auto 18px;
+      font-size: clamp(34px, 5.4vw, 66px);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
     }
-    .authors, .affils, .links, .note {
-      text-align: center;
-      margin: 10px auto;
-      max-width: 940px;
+
+    .subtitle {
+      max-width: 920px;
+      margin: 0 auto 18px;
+      font-size: clamp(17px, 2vw, 21px);
+      color: var(--muted);
     }
-    .authors { font-size: 18px; }
-    .affils, .note { color: var(--muted); }
-    .links {
+
+    .authors {
+      max-width: 1000px;
+      margin: 16px auto 7px;
+      font-size: 17px;
+    }
+
+    .affils {
+      max-width: 900px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .btns {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
-      margin-top: 18px;
+      gap: 11px;
+      margin-top: 28px;
     }
+
     .btn {
-      display: inline-block;
-      padding: 10px 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 17px;
       border-radius: 999px;
-      background: var(--card);
+      background: #fff;
       border: 1px solid var(--line);
-      font-weight: 600;
+      color: var(--text);
+      font-weight: 800;
+      box-shadow: 0 8px 24px rgba(28,38,72,0.07);
     }
+
+    .btn:hover { transform: translateY(-1px); text-decoration: none; }
     .btn.primary {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+      color: #fff;
+      border-color: transparent;
     }
-    section {
-      padding: 28px 0;
-    }
+
+    section { padding: 30px 0; }
+
     .card {
       background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 6px 22px rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(228,232,241,0.92);
+      border-radius: var(--radius);
+      padding: clamp(22px, 3vw, 34px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
+
     h2 {
-      margin: 0 0 16px;
-      font-size: 26px;
+      margin: 0 0 15px;
+      font-size: clamp(25px, 3vw, 36px);
+      letter-spacing: -0.035em;
+      line-height: 1.14;
     }
+
     h3 {
-      margin: 20px 0 10px;
+      margin: 20px 0 9px;
       font-size: 20px;
+      letter-spacing: -0.02em;
     }
+
     p { margin: 10px 0; }
-    .teaser {
+    .muted { color: var(--muted); }
+
+    .figure {
       width: 100%;
-      border-radius: 14px;
+      display: block;
+      border-radius: 16px;
       border: 1px solid var(--line);
       background: #fff;
-      display: block;
+      box-shadow: 0 10px 26px rgba(28,38,72,0.06);
     }
-    .muted { color: var(--muted); }
+
+    .caption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      gap: 20px;
+      align-items: start;
     }
+
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
-    .result-block {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
-      background: #fcfcfd;
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
     }
-    .result-block img {
-      width: 100%;
+
+    .stat {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff, #fafbff);
+    }
+
+    .stat strong {
       display: block;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      background: white;
+      font-size: 27px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
     }
-    .caption {
-      margin-top: 10px;
+
+    .stat span {
+      display: block;
+      margin-top: 7px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
     }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: #fff;
+    }
+
+    .protocol {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .protocol::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 23px;
+      width: 5px;
+      height: calc(100% - 30px);
+      border-radius: 99px;
+      background: linear-gradient(180deg, var(--primary), var(--primary2));
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 14.5px;
       overflow: hidden;
-      border-radius: 12px;
-      font-size: 15px;
+      border-radius: 16px;
     }
+
     th, td {
       border: 1px solid var(--line);
-      padding: 12px 10px;
+      padding: 12px 11px;
       text-align: left;
       vertical-align: top;
     }
-    th { background: #f3f4f6; }
-    pre {
-      background: #0f172a;
-      color: #e5e7eb;
-      padding: 16px;
-      border-radius: 14px;
-      overflow-x: auto;
-      font-size: 14px;
+
+    th {
+      background: #f2f5fc;
+      font-weight: 800;
     }
+
+    .benchmark-table {
+      font-size: 13.5px;
+      min-width: 700px;
+    }
+
+    .benchmark-table th {
+      text-align: center;
+      white-space: nowrap;
+      position: sticky;
+      top: 0;
+    }
+
+    .benchmark-table td {
+      text-align: center;
+      padding: 10px 8px;
+    }
+
+    .benchmark-table td:first-child {
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .benchmark-table .proto {
+      text-align: left;
+    }
+
+
+    .gallery-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .gallery-card h3 { margin: 4px 0 10px; }
+
+    .gallery-card img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: #2d48a4;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 13px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .timeline-row:last-child { border-bottom: 0; }
+    .year { font-weight: 900; color: var(--primary); }
+
+    pre {
+      margin: 14px 0 0;
+      padding: 18px;
+      border-radius: 18px;
+      background: #0f172a;
+      color: #dbeafe;
+      overflow-x: auto;
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .notice {
+      padding: 15px 17px;
+      border-radius: 18px;
+      border: 1px solid rgba(49,87,213,0.22);
+      background: rgba(237,242,255,0.76);
+      color: #25345d;
+    }
+
     footer {
-      padding: 24px 0 50px;
+      padding: 34px 0 56px;
       color: var(--muted);
       text-align: center;
+      font-size: 14px;
     }
-    @media (max-width: 800px) {
-      .grid-2, .grid-3 { grid-template-columns: 1fr; }
-      .authors { font-size: 16px; }
+
+    @media (max-width: 900px) {
+      .nav-inner { align-items: flex-start; flex-direction: column; padding: 14px 0; }
+      .nav-links { justify-content: flex-start; }
+      .grid-2, .grid-3, .stat-grid { grid-template-columns: 1fr; }
+      .timeline-row { grid-template-columns: 1fr; gap: 4px; }
+      .hero { padding-top: 46px; }
     }
   </style>
 </head>
+
 <body>
+  <!--
+    Asset naming suggestion:
+    assets/teaser.jpg                         -> a compact source/target/results teaser
+    assets/dataset_examples.jpg               -> database-examples.pdf
+    assets/taxonomy_timeline.jpg              -> Trees图.pptx exported image
+    assets/protocol_overview.jpg              -> P1协议示意图.pdf or a combined protocol figure
+    assets/radar_chart.jpg                    -> Visio-雷达图.pdf
+    assets/protocol1_results.jpg              -> protocol1_qualitative_comparisons.pdf
+    assets/protocol2_results.jpg              -> protocol2_qualitative_comparisons.pdf
+    assets/protocol3_results.jpg              -> protocol3_qualitative_comparisons.pdf
+  -->
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark"></span>
+        <span>CASIA FaceSwapping</span>
+      </a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#dataset">Dataset</a>
+        <a href="#protocols">Protocols</a>
+        <a href="#results">Results</a>
+        <a href="#taxonomy">Taxonomy</a>
+        <a href="#resources">Resources</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </div>
+  </nav>
+
   <header class="hero">
     <div class="container">
-      <h1>Towards High Fidelity Face Swapping:<br/>A Comprehensive Survey and New Benchmark</h1>
+      <h1>Towards High-Fidelity Face Swapping:<br />A Comprehensive Survey and New Benchmark</h1>
+      <p class="subtitle">
+        A unified taxonomy, a high-quality face swapping benchmark, and extensive evaluation under normal, cross-ethnicity, and cross-attribute protocols.
+      </p>
+
       <div class="authors">
         Qi Li, Weining Wang, Shuangjun Du, Bo Peng, Jing Dong, Kun Wang, Zhenan Sun, and Ming-Hsuan Yang
       </div>
       <div class="affils">
-        Institute of Automation, Chinese Academy of Sciences &nbsp;|&nbsp; Nanyang Technological University &nbsp;|&nbsp; University of California, Merced
+        Institute of Automation, Chinese Academy of Sciences · Nanyang Technological University · University of California, Merced
       </div>
-      <div class="links">
+
+      <div class="btns">
         <a class="btn primary" href="#" target="_blank" rel="noopener">Paper</a>
         <a class="btn" href="#" target="_blank" rel="noopener">arXiv</a>
         <a class="btn" href="#" target="_blank" rel="noopener">Code</a>
-        <a class="btn" href="#" target="_blank" rel="noopener">Dataset</a>
+        <a class="btn" href="#dataset">Dataset</a>
+        <a class="btn" href="#results">More Results</a>
         <a class="btn" href="#citation">BibTeX</a>
       </div>
-      <p class="note">This project page provides additional qualitative results, benchmark details, and resources for our face swapping survey and CASIA FaceSwapping benchmark.</p>
     </div>
   </header>
 
   <main class="container">
-    <section>
+    <section id="overview">
       <div class="card">
         <h2>Overview</h2>
         <p>
-          Face swapping aims to transfer the identity of a source face onto a target while preserving target-specific attributes such as pose, expression, illumination, and background. This project accompanies our survey and benchmark paper, which provides a unified taxonomy of existing methods and introduces <strong>CASIA FaceSwapping</strong>, a high-quality benchmark designed for fair and fine-grained evaluation.
+          Face swapping aims to transfer the identity of a source face onto a target while preserving target-specific attributes such as pose, expression, illumination, and background. Existing evaluations are often fragmented across different datasets, protocols, and implementation details, making it difficult to fairly compare different methods.
         </p>
         <p>
-          Our benchmark emphasizes three practically important aspects: <strong>baseline performance under normal conditions</strong>, <strong>cross-ethnicity generalization</strong>, and <strong>robustness to attribute variations</strong>. We also provide additional visual comparisons to complement the quantitative analysis in the paper.
+          This project page accompanies our paper and provides additional materials beyond the manuscript, including dataset examples, benchmark protocols, quantitative summaries, and more qualitative comparisons across representative face swapping methods.
         </p>
+
+        <div class="stat-grid">
+          <div class="stat"><strong>1,291</strong><span>subjects</span></div>
+          <div class="stat"><strong>2,582</strong><span>videos</span></div>
+          <div class="stat"><strong>2.83M</strong><span>frames</span></div>
+          <div class="stat"><strong>4K</strong><span>raw video resolution</span></div>
+        </div>
       </div>
     </section>
 
-    <section>
+    <section id="taxonomy">
       <div class="card">
-        <h2>Teaser</h2>
-        <img class="teaser" src="assets/teaser.jpg" alt="Teaser figure" />
+        <h2>Survey Taxonomy</h2>
+        <p>
+          We organize face swapping methods into five major paradigms according to their design principles and representation choices.
+        </p>
+        <img class="figure" src="assets/taxonomy_timeline.png" alt="Evolutionary path of high-fidelity face swapping technology." />
         <p class="caption">
-          Replace this image with a teaser figure, benchmark overview, taxonomy figure, or a representative qualitative comparison from the paper.
+          Evolutionary path of high-fidelity face swapping methods.
         </p>
       </div>
     </section>
-    
 
-
-    <section>
+    <section id="dataset">
       <div class="card">
-        <h2>Benchmark Overview</h2>
-        <div class="grid-2">
-          <div>
-            <h3>CASIA FaceSwapping</h3>
-            <ul>
-              <li>1,291 subjects and 2,582 videos</li>
-              <li>4K resolution (2160 × 3840)</li>
-              <li>Balanced demographic composition</li>
-              <li>Controlled pose, expression, and illumination variations</li>
-              <li>Designed specifically for face swapping evaluation</li>
-            </ul>
+        <h2>CASIA FaceSwapping Dataset</h2>
+        <p>
+          CASIA FaceSwapping is designed specifically for controlled and fine-grained face swapping evaluation. It contains balanced demographic distributions and explicit attribute variations, enabling systematic analysis of identity preservation, attribute consistency, visual fidelity, and robustness.
+        </p>
+        <table>
+          <tbody>
+            <tr><th>Subjects</th><td>1,291 identities</td></tr>
+            <tr><th>Videos</th><td>2,582 videos</td></tr>
+            <tr><th>Raw resolution</th><td>2160 × 3840</td></tr>
+            <tr><th>Demographics</th><td>Asian, African, and Caucasian</td></tr>
+            <tr><th>Variations</th><td>Normal, pose, expression, and illumination</td></tr>
+            <tr><th>Aligned images</th><td>Uniformly sampled and aligned face images for benchmark evaluation</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:22px;">
+          <img class="figure" src="assets/dataset_examples.png" alt="Dataset examples showing ethnicity, pose, illumination, and expression variations." />
+          <p class="caption">
+            Dataset examples showing ethnicity, pose, illumination, and expression variations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="protocols">
+      <div class="card">
+        <h2>Evaluation Protocols</h2>
+        <p>
+          We establish three standardized protocols to isolate different factors and provide interpretable evaluation. These protocols are designed to evaluate standard performance, demographic generalization, and robustness to dynamic attribute variations.
+        </p>
+
+        <div class="grid-3">
+          <div class="mini-card protocol">
+            <h3>Protocol 1: Normal</h3>
+            <p class="muted">Same ethnicity · normal recordings</p>
+            <p>
+              Measures baseline face swapping performance under relatively controlled conditions.
+            </p>
+            <div class="pill-row">
+              <span class="pill">4,500 pairs</span>
+              <span class="pill">baseline</span>
+              <span class="pill">same ethnicity</span>
+            </div>
           </div>
-          <div>
-            <img class="teaser" src="assets/dataset_samples.jpg" alt="Dataset samples" />
-            <p class="caption">Suggested figure: aligned face samples illustrating ethnicity, pose, illumination, and expression variations.</p>
+          <div class="mini-card protocol">
+            <h3>Protocol 2: Cross-ethnicity</h3>
+            <p class="muted">Different ethnicities · normal recordings</p>
+            <p>
+              Tests whether a method can generalize across demographic groups without identity leakage or appearance bias.
+            </p>
+            <div class="pill-row">
+              <span class="pill">1,200 pairs</span>
+              <span class="pill">fairness</span>
+              <span class="pill">generalization</span>
+            </div>
+          </div>
+          <div class="mini-card protocol">
+            <h3>Protocol 3: Cross-attribute</h3>
+            <p class="muted">Same ethnicity · pose / expression / illumination shifts</p>
+            <p>
+              Evaluates robustness when the target contains challenging attribute variations.
+            </p>
+            <div class="pill-row">
+              <span class="pill">4,300 pairs</span>
+              <span class="pill">robustness</span>
+              <span class="pill">attribute shifts</span>
+            </div>
           </div>
         </div>
 
-        <h3>Evaluation Protocols</h3>
+        <h3>Protocol Summary</h3>
         <table>
           <thead>
             <tr>
               <th>Protocol</th>
-              <th>Goal</th>
-              <th>Setting</th>
-              <th>Pairs</th>
+              <th>Ethnicity</th>
+              <th>Attribute Setting</th>
+              <th>Pair Count</th>
+              <th>Evaluation Focus</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Normal</td>
-              <td>Baseline performance</td>
-              <td>Same ethnicity, normal conditions</td>
+              <td>Same</td>
+              <td>Normal</td>
               <td>4,500</td>
+              <td>Identity transfer and target attribute preservation under standard conditions</td>
             </tr>
             <tr>
               <td>Cross-ethnicity</td>
-              <td>Demographic generalization</td>
-              <td>Different ethnicities, normal conditions</td>
+              <td>Different</td>
+              <td>Normal</td>
               <td>1,200</td>
+              <td>Demographic generalization and potential ethnicity-related bias</td>
             </tr>
             <tr>
               <td>Cross-attribute</td>
-              <td>Robustness to attribute shifts</td>
-              <td>Same ethnicity, varying pose / expression / illumination</td>
+              <td>Same</td>
+              <td>Different attributes</td>
               <td>4,300</td>
+              <td>Robustness to pose, expression, and illumination variations</td>
             </tr>
           </tbody>
         </table>
-      </div>
-    </section>
 
-    <section>
-      <div class="card">
-        <h2>Representative Results</h2>
-        <p>
-          Quantitative evaluation shows that different methods exhibit distinct trade-offs between identity fidelity, attribute consistency, and visual realism. Our benchmark highlights that performance under standard settings does not necessarily translate to stronger robustness under cross-ethnicity or cross-attribute scenarios.
-        </p>
-        <div class="grid-2">
-          <div class="result-block">
-            <img src="assets/radar_chart.jpg" alt="Radar chart" />
-            <p class="caption">Suggested figure: normalized radar chart summarizing identity preservation, pose/expression consistency, and FID under the three protocols.</p>
-          </div>
-          <div class="result-block">
-            <img src="assets/line_chart.jpg" alt="Line chart" />
-            <p class="caption">Suggested figure: protocol-level performance trends showing how methods degrade under harder evaluation settings.</p>
-          </div>
+        <div style="margin-top:22px;">
+          <img class="figure" src="assets/protocol_overview.png" alt="Evaluation protocol overview." />
+          <p class="caption">
+            Protocol visualization showing the three evaluation settings.
+          </p>
         </div>
       </div>
     </section>
 
+    <section id="metrics">
+      <div class="card">
+        <h2>Evaluation Metrics</h2>
+        <p>
+          We evaluate face swapping methods from complementary perspectives, including identity preservation, target attribute consistency, image realism, and temporal stability.
+        </p>
+        <div class="grid-3">
+          <div class="mini-card">
+            <h3>Identity</h3>
+            <p>ID Retrieval and ID Similarity measure whether the generated face preserves the source identity.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Attributes</h3>
+            <p>Pose Error and Expression Error evaluate whether the generated result preserves the target pose and expression.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Realism & Stability</h3>
+            <p>FID measures visual realism, while temporal consistency metrics evaluate video-level stability.</p>
+          </div>
+        </div>
 
+        <div style="margin-top:22px;">
+          <img class="figure" src="assets/radar_chart.png" alt="Radar chart comparing face swapping methods across metrics." />
+          <p class="caption">
+            Radar chart summarizing identity preservation, pose/expression consistency, and FID under the three protocols.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <section>
+    <section id="results">
+      <div class="card">
+        <h2>Benchmark Results</h2>
+        <p>
+          Quantitative evaluation of 14 face swapping methods across three protocols. Identity preservation is measured by ID retrieval and ID similarity, while pose error, expression error, and FID reflect attribute preservation and generation quality.
+        </p>
+        <div style="overflow-x:auto;">
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Protocol</th>
+              <th>ID Retrieval ↑</th>
+              <th>ID Similarity ↑</th>
+              <th>Pose Error ↓</th>
+              <th>Expr. Error ↓</th>
+              <th>FID ↓</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="3"><strong>HifiFace</strong></td><td class="proto">Normal</td><td>93.37%</td><td>0.62</td><td>3.59</td><td>3.12</td><td>20.40</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>93.23%</td><td>0.60</td><td>3.66</td><td>3.29</td><td>21.73</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>83.57%</td><td>0.57</td><td>4.12</td><td>3.14</td><td>9.93</td></tr>
+            <tr><td rowspan="3"><strong>FSGAN</strong></td><td class="proto">Normal</td><td>65.08%</td><td>0.50</td><td>3.34</td><td>2.35</td><td>56.23</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>57.82%</td><td>0.44</td><td>3.44</td><td>2.50</td><td>58.06</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>43.74%</td><td>0.40</td><td>4.08</td><td>2.37</td><td>40.83</td></tr>
+            <tr><td rowspan="3"><strong>Faceshifter</strong></td><td class="proto">Normal</td><td>66.41%</td><td>0.44</td><td>5.26</td><td>3.64</td><td>169.11</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>66.36%</td><td>0.43</td><td>5.32</td><td>3.78</td><td>172.31</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>56.09%</td><td>0.40</td><td>6.38</td><td>3.67</td><td>151.61</td></tr>
+            <tr><td rowspan="3"><strong>BlendFace</strong></td><td class="proto">Normal</td><td>73.35%</td><td>0.48</td><td>3.28</td><td>3.08</td><td>93.20</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>70.60%</td><td>0.45</td><td>3.37</td><td>3.19</td><td>94.51</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>64.83%</td><td>0.44</td><td>3.93</td><td>3.07</td><td>78.67</td></tr>
+            <tr><td rowspan="3"><strong>FaceDancer</strong></td><td class="proto">Normal</td><td>72.81%</td><td>0.49</td><td>3.42</td><td>3.15</td><td>19.14</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>78.74%</td><td>0.50</td><td>3.72</td><td>3.56</td><td>22.33</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>62.49%</td><td>0.46</td><td>3.95</td><td>3.14</td><td>6.32</td></tr>
+            <tr><td rowspan="3"><strong>SimSwap</strong></td><td class="proto">Normal</td><td>90.00%</td><td>0.61</td><td>2.14</td><td>2.43</td><td>21.75</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>90.74%</td><td>0.58</td><td>2.21</td><td>2.63</td><td>24.01</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>81.50%</td><td>0.55</td><td>2.43</td><td>2.42</td><td>7.86</td></tr>
+            <tr><td rowspan="3"><strong>CSCS</strong></td><td class="proto">Normal</td><td>88.75%</td><td>0.63</td><td>3.81</td><td>3.41</td><td>33.28</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>96.92%</td><td>0.65</td><td>4.11</td><td>3.72</td><td>36.17</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>87.54%</td><td>0.60</td><td>4.47</td><td>3.44</td><td>21.23</td></tr>
+            <tr><td rowspan="3"><strong>InsightFace</strong></td><td class="proto">Normal</td><td>96.92%</td><td>0.73</td><td>2.84</td><td>2.64</td><td>30.50</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>97.19%</td><td>0.71</td><td>2.97</td><td>2.87</td><td>32.32</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>95.14%</td><td>0.67</td><td>3.22</td><td>2.62</td><td>15.86</td></tr>
+            <tr><td rowspan="3"><strong>MegaFS</strong></td><td class="proto">Normal</td><td>73.70%</td><td>0.50</td><td>5.09</td><td>2.96</td><td>23.69</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>72.72%</td><td>0.49</td><td>5.09</td><td>3.15</td><td>25.93</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>55.82%</td><td>0.44</td><td>5.98</td><td>3.02</td><td>18.24</td></tr>
+            <tr><td rowspan="3"><strong>FSLSD</strong></td><td class="proto">Normal</td><td>15.52%</td><td>0.25</td><td>5.63</td><td>3.44</td><td>28.64</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>13.95%</td><td>0.23</td><td>5.62</td><td>3.58</td><td>30.47</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>11.95%</td><td>0.23</td><td>7.24</td><td>3.54</td><td>23.24</td></tr>
+            <tr><td rowspan="3"><strong>RAFSwap</strong></td><td class="proto">Normal</td><td>87.77%</td><td>0.54</td><td>3.69</td><td>3.28</td><td>45.61</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>86.00%</td><td>0.51</td><td>3.74</td><td>3.46</td><td>47.47</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>72.40%</td><td>0.48</td><td>4.80</td><td>3.31</td><td>31.37</td></tr>
+            <tr><td rowspan="3"><strong>RGISwap</strong></td><td class="proto">Normal</td><td>80.84%</td><td>0.53</td><td>4.00</td><td>3.41</td><td>18.77</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>80.92%</td><td>0.52</td><td>4.03</td><td>3.58</td><td>21.28</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>62.96%</td><td>0.46</td><td>4.90</td><td>3.54</td><td>13.94</td></tr>
+            <tr><td rowspan="3"><strong>DiffSwap</strong></td><td class="proto">Normal</td><td>15.64%</td><td>0.32</td><td>3.67</td><td>2.88</td><td>96.55</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>13.70%</td><td>0.27</td><td>3.74</td><td>2.97</td><td>97.52</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>14.38%</td><td>0.30</td><td>4.14</td><td>2.89</td><td>87.11</td></tr>
+            <tr><td rowspan="3"><strong>FaceAdapter</strong></td><td class="proto">Normal</td><td>95.49%</td><td>0.66</td><td>4.38</td><td>2.95</td><td>23.83</td></tr>
+            <tr><td class="proto">Cross-ethnicity</td><td>94.74%</td><td>0.66</td><td>4.83</td><td>3.22</td><td>26.51</td></tr>
+            <tr><td class="proto">Cross-attribute</td><td>88.81%</td><td>0.61</td><td>5.05</td><td>2.96</td><td>14.71</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="qualitative">
       <div class="card">
         <h2>More Qualitative Results</h2>
-        <p class="muted">At least one more comparison figure should be shown here, as suggested in the paper review. You can organize the results by protocol.</p>
-        <div class="grid-3">
-          <div class="result-block">
-            <h3>Normal Protocol</h3>
-            <img src="assets/normal_results.jpg" alt="Normal protocol qualitative results" />
-            <p class="caption">Examples under relatively benign conditions. Most methods produce plausible results, but differences remain in identity fidelity and local artifacts.</p>
-          </div>
-          <div class="result-block">
-            <h3>Cross-ethnicity Protocol</h3>
-            <img src="assets/cross_ethnicity_results.jpg" alt="Cross-ethnicity protocol qualitative results" />
-            <p class="caption">Examples highlighting demographic generalization. Identity leakage, skin-tone inconsistency, and shading discontinuities become more evident.</p>
-          </div>
-          <div class="result-block">
-            <h3>Cross-attribute Protocol</h3>
-            <img src="assets/cross_attribute_results.jpg" alt="Cross-attribute protocol qualitative results" />
-            <p class="caption">Examples under challenging pose, expression, or illumination shifts, where local warping and boundary artifacts are more likely to appear.</p>
-          </div>
+        <p>
+          We provide additional qualitative comparisons across the three protocols. Each row contains the source, target, and swapped outputs from representative methods, making it easier to inspect identity preservation, expression consistency, illumination adaptation, boundary artifacts, and failure modes.
+        </p>
+
+        <div class="gallery-card" style="margin-bottom:18px;">
+          <h3>Normal Protocol</h3>
+          <img src="assets/protocol1_results.png" alt="Qualitative comparisons under the normal protocol." />
+          <p class="caption">
+            Standard setting with same-ethnicity pairs under normal conditions. Most methods produce plausible results, but differences remain in identity fidelity and local artifacts.
+          </p>
+        </div>
+        <div class="gallery-card" style="margin-bottom:18px;">
+          <h3>Cross-ethnicity Protocol</h3>
+          <img src="assets/protocol2_results.png" alt="Qualitative comparisons under the cross-ethnicity protocol." />
+          <p class="caption">
+            Cross-demographic setting highlighting identity leakage, skin-tone inconsistency, and shading discontinuities.
+          </p>
+        </div>
+        <div class="gallery-card">
+          <h3>Cross-attribute Protocol</h3>
+          <img src="assets/protocol3_results.png" alt="Qualitative comparisons under the cross-attribute protocol." />
+          <p class="caption">
+            Attribute-shift setting under challenging pose, expression, or illumination variations, where local warping and boundary artifacts are more likely.
+          </p>
         </div>
       </div>
     </section>
 
-    
-    <section>
+    <section id="resources">
       <div class="card">
         <h2>Resources</h2>
         <div class="grid-3">
-          <div class="result-block">
+          <div class="mini-card">
             <h3>Paper</h3>
-            <p>PDF, supplementary material, and citation information.</p>
-            <p><a href="#" target="_blank" rel="noopener">Download PDF</a></p>
+            <p>PDF and supplementary material will be linked here.</p>
+            <a href="#" target="_blank" rel="noopener">Coming soon</a>
           </div>
-          <div class="result-block">
-            <h3>Code</h3>
-            <p>Training, evaluation, and benchmark scripts.</p>
-            <p><a href="#" target="_blank" rel="noopener">Coming Soon</a></p>
-          </div>
-          <div class="result-block">
+          <div class="mini-card">
             <h3>Dataset</h3>
-            <p>Dataset description, protocol files, and access instructions.</p>
-            <p><a href="#" target="_blank" rel="noopener">Coming Soon</a></p>
+            <p>Dataset access instructions, protocol files, and benchmark metadata.</p>
+            <a href="#" target="_blank" rel="noopener">Coming soon</a>
           </div>
+          <div class="mini-card">
+            <h3>Code</h3>
+            <p>Evaluation scripts are being cleaned and documented for release.</p>
+            <a href="#" target="_blank" rel="noopener">Coming soon</a>
+          </div>
+        </div>
+
+        <h3>Coming Soon</h3>
+        <div class="notice">
+          Code, dataset access, and evaluation scripts will be released after internal cleanup. Stay tuned!
         </div>
       </div>
     </section>
@@ -327,10 +773,11 @@
     <section id="citation">
       <div class="card">
         <h2>Citation</h2>
-        <pre>@article{li2026faceswappingsurvey,
-  title   = {Towards High Fidelity Face Swapping: A Comprehensive Survey and New Benchmark},
-  author  = {Qi Li and Weining Wang and Shuangjun Du and Bo Peng and Jing Dong and Kun Wang and Zhenan Sun and Ming-Hsuan Yang},
-  journal = {TBD},
+        <p>BibTeX entry will be updated upon publication.</p>
+        <pre>@article{li2026highfidelityfaceswapping,
+  title   = {Towards High-Fidelity Face Swapping: A Comprehensive Survey and New Benchmark},
+  author  = {Li, Qi and Wang, Weining and Du, Shuangjun and Peng, Bo and Dong, Jing and Wang, Kun and Sun, Zhenan and Yang, Ming-Hsuan},
+  journal = {Pending},
   year    = {2026}
 }</pre>
       </div>
@@ -339,7 +786,7 @@
 
   <footer>
     <div class="container">
-      Project page for the face swapping survey and benchmark. Please replace placeholder links and images before publishing.
+      © CASIA FaceSwapping Benchmark. This page is under active construction.
     </div>
   </footer>
 </body>
