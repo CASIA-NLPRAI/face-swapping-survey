@@ -1,0 +1,31 @@
+# Model weights
+*.pth
+*.pkl
+*.tar
+*.chj
+
+# Data files
+*.npy
+*.csv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Results
+result_txt_*/
+eval_results_*.txt
