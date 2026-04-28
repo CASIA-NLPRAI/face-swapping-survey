@@ -4,22 +4,39 @@ Project page: https://casia-nlprai.github.io/face-swapping-survey/
 
 ## Dataset & Weights
 
-Baidu Pan: https://pan.baidu.com/s/10qwFYk3s8DGqt5EksoGkCA (password: `xxxx`)
+### Face Images & Videos
+
+The face images (`faces/`) and raw videos (`videos/`) are available via Baidu Pan. To obtain the download password, you must:
+
+1. Download and fill out the [**CASIA FaceSwapping Dataset License Agreement**](./CASIA%20FaceSwapping%20Dataset%20License%20Agreement.docx).
+2. Send the **signed agreement** to **qi.li@mais.ia.ac.cn**.
+3. The password will be sent to you via email.
+
+Baidu Pan: https://pan.baidu.com/s/1yaIUvP4gIjTspanO4QQqdw
 
 ```
 CASIA_FaceSwapping/
 ├── faces/                    # Aligned face images ({video_id}_{frame}.png)
+└── videos/                   # Original raw videos ({video_id}.mp4)
+```
+
+### Pretrained Models
+
+Pretrained model weights and pre-computed identity features are available via Baidu Pan (password: `6vkk`).
+
+Baidu Pan: https://pan.baidu.com/s/1fXdbuc_qfOLQjdjGwjSQLg
+
+```
+pretrained_models/
 ├── faces_landmarks/          # 5-point landmarks (x y per line, 5 lines per file)
-├── videos/                   # Original raw videos ({video_id}.mp4)
-└── pretrained_models/
-    ├── CosFace_ACC99.28.pth
-    ├── phase1_wpdc_vdc.pth.tar
-    ├── hopenet_robust_alpha1.pkl
-    ├── th_model_params.pth
-    ├── pt_inception-2015-12-05-6726825d.pth
-    ├── BFM_mSEmTFK68etc.chj
-    ├── BFM_similarity_Lm3D_all.mat
-    └── features_dict.npy            # Pre-computed identity features for ID Retrieval
+├── CosFace_ACC99.28.pth
+├── phase1_wpdc_vdc.pth.tar
+├── hopenet_robust_alpha1.pkl
+├── th_model_params.pth
+├── pt_inception-2015-12-05-6726825d.pth
+├── BFM_mSEmTFK68etc.chj
+├── BFM_similarity_Lm3D_all.mat
+└── features_dict.npy            # Pre-computed identity features for ID Retrieval
 ```
 
 ## Repository Structure
@@ -27,7 +44,6 @@ CASIA_FaceSwapping/
 ```
 face-swapping-survey/
 ├── benchmark/                        # Protocol pair files and annotations
-│   ├── anno.csv                      # Video metadata (name, gender, age, ethnicity, nationality, scene)
 │   ├── image_pairs_normal.txt        # Protocol 1 image pairs (4,500)
 │   ├── image_pairs_cross_ethnicity.txt  # Protocol 2 image pairs (1,200)
 │   ├── image_pairs_cross_attribute.txt  # Protocol 3 image pairs (4,300)
@@ -68,7 +84,6 @@ face-swapping-survey/
 **Image pairs** (`benchmark/image_pairs_*.txt`): each line is `{source} {target}`, e.g. `0041-0_0.png 1268-0_0.png`. Pairs are bidirectional.
 
 **Video pairs** (`benchmark/video_pairs_*.txt`): each line is `{source_video} {target_video}`, e.g. `1271-0 0113-1`. For video swapping, extract frame 0 from source as identity, frames 0-99 from target.
-
 
 ## Getting Started
 
