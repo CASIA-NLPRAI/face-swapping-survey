@@ -1,6 +1,6 @@
 # Towards High-Fidelity Face Swapping: A Comprehensive Survey and New Benchmark
 
-Project page: https://casia-nlprai.github.io/face-swapping-survey/
+Paper: https://arxiv.org/abs/2605.00883 | Project page: https://casia-nlprai.github.io/face-swapping-survey/
 
 ## Dataset & Weights
 
@@ -177,7 +177,7 @@ Image-level metrics (ID Retrieval, Pose Error, etc.) can also be applied per-fra
 @article{li2026highfidelityfaceswapping,
   title   = {Towards High-Fidelity Face Swapping: A Comprehensive Survey and New Benchmark},
   author  = {Li, Qi and Wang, Weining and Du, Shuangjun and Peng, Bo and Dong, Jing and Wang, Kun and Sun, Zhenan and Yang, Ming-Hsuan},
-  journal = {Pending},
+  journal = {arXiv preprint arXiv:2605.00883},
   year    = {2026}
 }
 ```
